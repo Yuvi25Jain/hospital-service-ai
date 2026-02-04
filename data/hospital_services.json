@@ -1,0 +1,97 @@
+[
+  {
+    "hospital_id": 1,
+    "service_id": 1,
+    "price": 1200,
+    "report_time_hours": 24,
+    "notes": "Includes basic vitals and doctor consultation"
+  },
+  {
+    "hospital_id": 1,
+    "service_id": 2,
+    "price": 550,
+    "report_time_hours": 6,
+    "notes": "Walk-in X-Ray available"
+  },
+  {
+    "hospital_id": 1,
+    "service_id": 5,
+    "price": 850,
+    "report_time_hours": 12,
+    "notes": "Fasting required for certain tests"
+  },
+
+  {
+    "hospital_id": 2,
+    "service_id": 1,
+    "price": 1500,
+    "report_time_hours": 24,
+    "notes": "Senior physician consultation included"
+  },
+  {
+    "hospital_id": 2,
+    "service_id": 2,
+    "price": 650,
+    "report_time_hours": 4,
+    "notes": "Digital X-Ray with same-day report"
+  },
+  {
+    "hospital_id": 2,
+    "service_id": 3,
+    "price": 4800,
+    "report_time_hours": 24,
+    "notes": "MRI by prior appointment only"
+  },
+  {
+    "hospital_id": 2,
+    "service_id": 4,
+    "price": 3200,
+    "report_time_hours": 24,
+    "notes": "CT scan with radiologist review"
+  },
+
+  {
+    "hospital_id": 3,
+    "service_id": 5,
+    "price": 700,
+    "report_time_hours": 8,
+    "notes": "Home sample collection available"
+  },
+  {
+    "hospital_id": 3,
+    "service_id": 1,
+    "price": 900,
+    "report_time_hours": 24,
+    "notes": "Basic health checkup package"
+  },
+
+  {
+    "hospital_id": 4,
+    "service_id": 4,
+    "price": 2800,
+    "report_time_hours": 24,
+    "notes": "CT scan with female technician on request"
+  },
+  {
+    "hospital_id": 4,
+    "service_id": 5,
+    "price": 950,
+    "report_time_hours": 24,
+    "notes": "Reports delivered next day"
+  },
+
+  {
+    "hospital_id": 5,
+    "service_id": 3,
+    "price": 5200,
+    "report_time_hours": 24,
+    "notes": "High-resolution MRI scan"
+  },
+  {
+    "hospital_id": 5,
+    "service_id": 2,
+    "price": 600,
+    "report_time_hours": 6,
+    "notes": "Minimal waiting time"
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "SK Hospital",
+    "type": "Hospital",
+    "rating": 4.1,
+    "phone": "+91-9000000001",
+    "whatsapp": "https://wa.me/919000000001",
+    "booking_url": "https://skhospital.example.com/book"
+  },
+  {
+    "id": 2,
+    "name": "Darsh Hospital",
+    "type": "Hospital",
+    "rating": 4.3,
+    "phone": "+91-9000000002",
+    "whatsapp": "https://wa.me/919000000002",
+    "booking_url": "https://darshhospital.example.com/book"
+  },
+  {
+    "id": 3,
+    "name": "Shivangi Pathology",
+    "type": "Laboratory",
+    "rating": 4.5,
+    "phone": "+91-9000000003",
+    "whatsapp": "https://wa.me/919000000003",
+    "booking_url": "https://shivangipathology.example.com/book"
+  },
+  {
+    "id": 4,
+    "name": "Kanthia Hospital",
+    "type": "Hospital",
+    "rating": 3.9,
+    "phone": "+91-9000000004",
+    "whatsapp": "https://wa.me/919000000004",
+    "booking_url": "https://kanthiahospital.example.com/book"
+  },
+  {
+    "id": 5,
+    "name": "Vednatu Hospital",
+    "type": "Hospital",
+    "rating": 4.4,
+    "phone": "+91-9000000005",
+    "whatsapp": "https://wa.me/919000000005",
+    "booking_url": "https://vednatuhospital.example.com/book"
+  }
+]

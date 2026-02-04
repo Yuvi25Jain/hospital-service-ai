@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "General Checkup",
+    "description": "A basic health assessment that includes vital signs, medical history review, and general physical examination."
+  },
+  {
+    "id": 2,
+    "name": "X-Ray",
+    "description": "A diagnostic imaging test used to view bones and detect fractures, infections, or abnormalities."
+  },
+  {
+    "id": 3,
+    "name": "MRI Scan",
+    "description": "A non-invasive imaging technique that uses magnetic fields to produce detailed images of internal organs and soft tissues."
+  },
+  {
+    "id": 4,
+    "name": "CT Scan",
+    "description": "An imaging procedure that combines multiple X-ray images to create cross-sectional views of the body."
+  },
+  {
+    "id": 5,
+    "name": "Blood Test",
+    "description": "A laboratory analysis of blood samples used to assess overall health and detect a wide range of medical conditions."
+  }
+]
