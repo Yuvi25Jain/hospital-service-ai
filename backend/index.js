@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const compareHospitals = require("./services/comparisonEngine");
 
 const app = express();
 
@@ -29,6 +30,31 @@ app.get("/hospitals", (req, res) => {
 app.get("/hospital-services", (req, res) => {
   res.json(hospitalServices);
 });
+
+app.get("/compare", (req, res) => {
+
+    const service = req.query.service;
+    const priority = req.query.priority;
+
+    // Validation check
+    if (!service || !priority) {
+        return res.status(400).json({
+            error: "service and priority are required"
+        });
+    }
+
+    const result = compareHospitals(service, priority);
+
+    // No results found
+    if (result.length === 0) {
+        return res.status(404).json({
+            error: "No matching hospitals found"
+        });
+    }
+
+    res.json(result);
+});
+
 
 // Server start
 const PORT = process.env.PORT || 5000;
