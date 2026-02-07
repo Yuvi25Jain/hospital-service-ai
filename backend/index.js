@@ -1,6 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const compareHospitals = require("./services/comparisonEngine");
+const extractIntent = require("./services/intentExtractor");
+const generateExplanation = require("./services/explanationGenerator");
+
+
 
 const app = express();
 
@@ -54,6 +58,38 @@ app.get("/compare", (req, res) => {
 
     res.json(result);
 });
+
+app.post("/agent", (req, res) => {
+
+    const userMessage = req.body.message;
+
+    if (!userMessage) {
+        return res.status(400).json({
+            error: "message is required"
+        });
+    }
+
+    const intent = extractIntent(userMessage);
+if (!intent || !intent.service || !intent.priority) {
+   return res.json({
+       reply: "I'm not sure what you need yet. Try asking something like:\n- cheap MRI\n- fast blood test\n- best rated CT scan",
+       suggestions: []
+   });
+}
+
+
+    const result = compareHospitals(intent.service, intent.priority);
+
+    const explanation = generateExplanation(result, intent);
+
+res.json({
+    reply: explanation,
+    suggestions: result
+});
+
+});
+
+
 
 
 // Server start
