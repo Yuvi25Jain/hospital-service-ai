@@ -3,6 +3,7 @@ const cors = require("cors");
 const compareHospitals = require("./services/comparisonEngine");
 const extractIntent = require("./services/intentExtractor");
 const generateExplanation = require("./services/explanationGenerator");
+const generateReasoning = require("./services/reasoningEngine");
 
 
 
@@ -70,7 +71,27 @@ app.post("/agent", (req, res) => {
     }
 
     const intent = extractIntent(userMessage);
-if (!intent || !intent.service || !intent.priority) {
+    // Follow-up logic
+
+// Case 1: no service detected
+if (!intent.service) {
+    return res.json({
+        reply: "Which service are you looking for? Example: MRI, Blood Test, CT Scan.",
+        suggestions: []
+    });
+}
+
+// Case 2: service detected but no priorities
+if (intent.priorities.length === 0) {
+    return res.json({
+        reply: `You selected ${intent.service}. What matters more — lowest price, fastest report, or highest rating?`,
+        suggestions: []
+    });
+}
+
+    console.log(intent);
+
+if (!intent || !intent.service || !intent.priorities) {
    return res.json({
        reply: "I'm not sure what you need yet. Try asking something like:\n- cheap MRI\n- fast blood test\n- best rated CT scan",
        suggestions: []
@@ -78,13 +99,17 @@ if (!intent || !intent.service || !intent.priority) {
 }
 
 
-    const result = compareHospitals(intent.service, intent.priority);
+    const result = compareHospitals(intent.service, intent.priorities);
 
     const explanation = generateExplanation(result, intent);
+    const reasoning = generateReasoning(result, intent);
+
 
 res.json({
     reply: explanation,
-    suggestions: result
+    reasoning: reasoning,
+    suggestions: result,
+    detectedIntent: intent
 });
 
 });

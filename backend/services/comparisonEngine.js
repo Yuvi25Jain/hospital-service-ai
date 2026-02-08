@@ -2,7 +2,7 @@ const services = require("../../data/services.json");
 const hospitals = require("../../data/hospitals.json");
 const hospitalServices = require("../../data/hospital_services.json");
 
-function compareHospitals(serviceName, priority) {
+function compareHospitals(serviceName, priorities) {
 
     // find service id
     const service = services.find(s => s.name === serviceName);
@@ -25,17 +25,34 @@ function compareHospitals(serviceName, priority) {
             };
         });
 
-    // ranking logic
-    if (priority === "low_price") {
-        results.sort((a, b) => a.price - b.price);
-    }
+    // MULTI-PRIORITY ranking logic (DAY 5 upgrade)
+    if (priorities && priorities.length > 0) {
 
-    if (priority === "fast_report") {
-        results.sort((a, b) => a.report_time_hours - b.report_time_hours);
-    }
+        results.sort((a, b) => {
 
-    if (priority === "high_rating") {
-        results.sort((a, b) => b.rating - a.rating);
+            for (let priority of priorities) {
+
+                if (priority === "low_price") {
+                    if (a.price !== b.price) {
+                        return a.price - b.price;
+                    }
+                }
+
+                if (priority === "fast_report") {
+                    if (a.report_time_hours !== b.report_time_hours) {
+                        return a.report_time_hours - b.report_time_hours;
+                    }
+                }
+
+                if (priority === "high_rating") {
+                    if (a.rating !== b.rating) {
+                        return b.rating - a.rating;
+                    }
+                }
+            }
+
+            return 0;
+        });
     }
 
     return results;

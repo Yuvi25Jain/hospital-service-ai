@@ -6,21 +6,25 @@ function generateExplanation(results, intent) {
 
     const best = results[0];
 
-    let reason = "";
+    let reasons = [];
 
-    if (intent.priority === "low_price") {
-        reason = "offers the lowest price";
+    if (intent.priorities.includes("low_price")) {
+        reasons.push("affordable pricing");
     }
 
-    if (intent.priority === "fast_report") {
-        reason = "provides the fastest report time";
+    if (intent.priorities.includes("fast_report")) {
+        reasons.push("fast report delivery");
     }
 
-    if (intent.priority === "high_rating") {
-        reason = "has the highest rating";
+    if (intent.priorities.includes("high_rating")) {
+        reasons.push("high patient ratings");
     }
 
-    return `${best.hospital} is recommended because it ${reason} for ${intent.service}.`;
+    const reasonText = reasons.join(" and ");
+
+    return `Based on your request for ${reasonText} in ${intent.service}, ${best.hospital} is recommended as the best option.`;
 }
+
+
 
 module.exports = generateExplanation;

@@ -5,38 +5,42 @@ function extractIntent(message) {
     const text = message.toLowerCase();
 
     let service = null;
-    let priority = null;
+    let priorities = [];
 
-    // Service detection
-    const serviceMap = {
-        "mri": "MRI Scan",
-        "xray": "X-Ray",
-        "x-ray": "X-Ray",
-        "blood": "Blood Test",
-        "ct": "CT Scan"
-    };
-
-    for (const key in serviceMap) {
-        if (text.includes(key)) {
-            service = serviceMap[key];
-            break;
-        }
+    // Detect service
+    if (text.includes("mri")) {
+        service = "MRI Scan";
     }
 
-    // Priority detection
+    if (text.includes("xray") || text.includes("x-ray")) {
+        service = "X-Ray";
+    }
+
+    if (text.includes("blood")) {
+        service = "Blood Test";
+    }
+
+    if (text.includes("ct")) {
+        service = "CT Scan";
+    }
+
+    // Detect multiple priorities
     if (/cheap|lowest|budget|affordable/.test(text)) {
-        priority = "low_price";
+        priorities.push("low_price");
     }
 
     if (/fast|quick|urgent/.test(text)) {
-        priority = "fast_report";
+        priorities.push("fast_report");
     }
 
     if (/best|top|rating/.test(text)) {
-        priority = "high_rating";
+        priorities.push("high_rating");
     }
 
-    return { service, priority };
+    return {
+        service,
+        priorities
+    };
 }
 
 module.exports = extractIntent;
