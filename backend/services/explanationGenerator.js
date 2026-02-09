@@ -22,7 +22,7 @@ function generateExplanation(results, intent) {
 
     const reasonText = reasons.join(" and ");
 
-    return `Based on your request for ${reasonText} in ${intent.service}, ${best.hospital} is recommended as the best option.`;
+    return `Based on your request for ${reasonText} in ${intent.service}, ${best.hospital} is recommended as the best option. Would you like help booking this service?`;
 }
 
 

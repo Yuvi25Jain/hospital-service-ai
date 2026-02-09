@@ -21,7 +21,10 @@ function compareHospitals(serviceName, priorities) {
                 hospital: hospital.name,
                 price: hs.price,
                 report_time_hours: hs.report_time_hours,
-                rating: hospital.rating
+                rating: hospital.rating,
+                phone : hospital.phone,
+                booking_link : hospital.booking_link
+
             };
         });
 

@@ -4,6 +4,7 @@ const compareHospitals = require("./services/comparisonEngine");
 const extractIntent = require("./services/intentExtractor");
 const generateExplanation = require("./services/explanationGenerator");
 const generateReasoning = require("./services/reasoningEngine");
+const generateBookingOptions = require("./services/bookingGenerator");
 
 
 
@@ -103,12 +104,15 @@ if (!intent || !intent.service || !intent.priorities) {
 
     const explanation = generateExplanation(result, intent);
     const reasoning = generateReasoning(result, intent);
+    const bookingOptions = generateBookingOptions(result);
+
 
 
 res.json({
     reply: explanation,
     reasoning: reasoning,
     suggestions: result,
+    bookingOptions: bookingOptions,
     detectedIntent: intent
 });
 
