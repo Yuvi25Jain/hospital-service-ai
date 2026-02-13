@@ -8,21 +8,28 @@ function extractIntent(message) {
     let priorities = [];
 
     // Detect service
-    if (text.includes("mri")) {
-        service = "MRI Scan";
-    }
+    
 
-    if (text.includes("xray") || text.includes("x-ray")) {
-        service = "X-Ray";
-    }
+if (text.includes("mri")) {
+    service = "MRI Scan";
+}
 
-    if (text.includes("blood")) {
-        service = "Blood Test";
-    }
+if (text.includes("xray") || text.includes("x-ray")) {
+    service = "X-Ray";
+}
 
-    if (text.includes("ct")) {
-        service = "CT Scan";
-    }
+if (text.includes("blood")) {
+    service = "Blood Test";
+}
+
+if (text.includes("ct")) {
+    service = "CT Scan";
+}
+
+if (text.includes("general") || text.includes("checkup")) {
+    service = "General Checkup";
+}
+
 
     // Detect multiple priorities
     if (/cheap|lowest|budget|affordable/.test(text)) {
